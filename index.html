@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS Grid exercises</title>
+    <link rel="stylesheet" href="css/prism.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <h1>CSS Grid samples</h1>
+<main>
+    <h2>Simple Grid</h2>
+    <h4>Define column and rows</h4>
+    <pre>
+        <code class="language-css">
+            display: grid;
+            grid-template-columns: 25% 25% 25% 25%;
+            grid-template-rows: 5rem 5rem 5rem;
+        </code>
+    </pre>
+    <section class="grid">
+        <div class="c-block violet">block 1</div>
+        <div class="c-block blueviolet">block 2</div>
+        <div class="c-block blue">block 3</div>
+        <div class="c-block bluegreen">block 4</div>
+        <div class="c-block green">block 5</div>
+        <div class="c-block greenyellow">block 6</div>
+        <div class="c-block yellow">block 7</div>
+        <div class="c-block gold">block 8</div>
+        <div class="c-block orange">block 9</div>
+        <div class="c-block redorange">block 10</div>
+        <div class="c-block red">block 11</div>
+        <div class="c-block redviolet">block 12</div>
+    </section>
+
+    <h2>Grid auto-flow: column</h2>
+    <h4>Grid using the repeat notation</h4>
+    <pre>
+        <code class="language-css">
+            display: grid;
+            grid-template-columns: repeat(6, 25%);
+            grid-template-rows: repeat(3, 7rem);
+            grid-auto-flow: column;
+        </code>
+    </pre>
+    <section class="grid-auto-flow">
+        <div class="c-block violet">block 1</div>
+        <div class="c-block blueviolet">block 2</div>
+        <div class="c-block blue">block 3</div>
+        <div class="c-block bluegreen">block 4</div>
+        <div class="c-block green">block 5</div>
+        <div class="c-block greenyellow">block 6</div>
+        <div class="c-block yellow">block 7</div>
+        <div class="c-block gold">block 8</div>
+        <div class="c-block orange">block 9</div>
+        <div class="c-block redorange">block 10</div>
+        <div class="c-block red">block 11</div>
+        <div class="c-block redviolet">block 12</div>
+    </section>
+
+    <h2>Grid 1 repeat</h2>
+    <h4>Positioning grid blocks and using the shorhand</h4>
+    <pre>
+        <code class="language-css">
+            .grid-1 {
+                display: grid;
+                grid-template-columns: repeat(4, 25%);
+            }
+            .grid-1 .green {
+                grid-column: 2/3;
+                grid-row: 1/2;
+            }
+            .grid-1 .orange {
+                grid-column: 2/3;
+                grid-row: 2/2;
+            }
+            .grid-1 .yellow {
+                grid-column: 3/4;
+                grid-row: 3/2;
+            }
+            .grid-1 .redviolet {
+                grid-column: 3/4;
+                grid-row: 4/3;
+            }
+        </code>
+    </pre>
+    <section class="grid-1">
+        <div class="c-block green">block 5</div>
+        <div class="c-block yellow">block 7</div>
+        <div class="c-block orange">block 9</div>
+        <div class="c-block redviolet">block 12</div>
+    </section>
+
+    <h2>Grid 2 autofit, minmax</h2>
+    <h4>Responsive using minmax</h4>
+    <pre>
+        <code class="language-css">
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+        </code>
+    </pre>
+    <section class="grid-2">
+        <div class="c-block violet">block 1</div>
+        <div class="c-block blueviolet">block 2</div>
+        <div class="c-block blue">block 3</div>
+        <div class="c-block bluegreen">block 4</div>
+        <div class="c-block green">block 5</div>
+        <div class="c-block greenyellow">block 6</div>
+        <div class="c-block yellow">block 7</div>
+        <div class="c-block gold">block 8</div>
+        <div class="c-block orange">block 9</div>
+        <div class="c-block redorange">block 10</div>
+        <div class="c-block red">block 11</div>
+        <div class="c-block redviolet">block 12</div>
+    </section>
+
+    <h2>Grid 3 gap</h2>
+    <h4>Grid using gap and frame</h4>
+    <pre>
+        <code class="language-css">
+            display: grid;
+            grid-template-columns: repeat(1, 5fr 1fr);
+            grid-template-rows: repeat(1, 1fr 5fr 1fr);
+            grid-gap: 0.5rem;
+        </code>
+    </pre>
+    <section class="grid-3">
+        <div class="c-block violet">block 1</div>
+        <div class="c-block blueviolet">block 2</div>
+        <div class="c-block blue">block 3</div>
+        <div class="c-block bluegreen">block 4</div>
+        <div class="c-block green">block 5</div>
+        <div class="c-block greenyellow">block 6</div>
+    </section>
+
+    <h2>Grid 4</h2>
+    <h4>Grid using named lines</h4>
+    <pre>
+        <code class="language-css">
+            .grid-4 {
+                display: grid;
+                width: 100%;
+                grid-template-columns:  [start-sidebar] 1fr .5rem 1fr [end-sidebar] .5rem
+                                        [start-main-area] 1fr repeat(6, [gutter] .5rem [row] 2fr) [end-main-area];
+                grid-template-rows: [start-header] 1fr [end-header] .5rem
+                                    [start-main] 4fr [end-main] .5rem
+                                    [start-footer] 1fr [end-footer];
+            }
+            .grid-4 .violet {
+                grid-column: start-sidebar / end-main-area;
+                grid-row: start-header / end-header;
+            }
+            .grid-4 .blueviolet {
+                grid-column: start-sidebar / end-sidebar;
+                grid-row: start-main / end-main;
+            }
+            .grid-4 .blue {
+                grid-column: start-main-area / gutter 8;
+                grid-row: start-main / end-main;
+            }
+            .grid-4 .green {
+                grid-column: start-sidebar / end-main-area;
+                grid-row: start-footer / end-footer;
+            }
+        </code>
+    </pre>
+    <section class="grid-4">
+        <div class="c-block violet">header</div>
+        <div class="c-block blueviolet">sidebar</div>
+        <div class="c-block blue">main</div>
+        <div class="c-block green">footer</div>
+    </section>
+
+
+    <h2>Grid 5 media queries</h2>
+    <h4>Responsive with grid area names</h4>
+    <pre>
+        <code class="language-css">
+            grid-5 {
+                display: grid;
+                width: 100%;
+                grid-template-columns: repeat(1, 1fr);
+                grid-row-gap: .5rem;
+                grid-template-rows: auto;
+                grid-template-areas: "header"
+                                     "sidebar"
+                                     "main"
+                                     "footer";
+            }
+            .grid-5 .violet {
+                grid-area: header;
+            }
+            .grid-5 .blueviolet {
+                grid-area: sidebar;
+            }
+            .grid-5 .blue {
+                grid-area: main;
+            }
+            .grid-5 .green {
+                grid-area: footer;
+            }
+
+            @media only screen and (min-width: 40rem)  {
+                .grid-5 {
+                    grid-gap: 0;
+                    grid-template-columns: 35% auto;
+                    grid-template-areas: "header header"
+                                         "sidebar main"
+                                         "footer footer";
+                }
+            }
+
+            @media only screen and (min-width: 70rem)   {
+                .grid-5 {
+                    grid-gap: 1rem;
+                    grid-template-columns: 1fr repeat(3, .5em 1fr);
+                    grid-template-areas: "header header header header header header header"
+                                         "sidebar . main main main main main"
+                                         "footer footer footer footer footer footer footer";
+                }
+            }
+        </code>
+    </pre>
+    <section class="grid-5">
+        <div class="c-block violet">header</div>
+        <div class="c-block blueviolet">sidebar</div>
+        <div class="c-block blue">main</div>
+        <div class="c-block green">footer</div>
+    </section>
+</main>
+    <script src="js/prism.js"></script>
+</body>
+</html>

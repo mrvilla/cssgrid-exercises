@@ -1,0 +1,180 @@
+pre[class*="language-"] {
+     border-radius: 0;
+     border: 0;
+    box-shadow: none;
+    margin: .5em 0;
+}
+body {
+    margin: 2rem 1rem;
+    background: #fff;
+}
+h1 {
+    font-family: sans-serif;
+}
+h2 {
+    font-family: cursive;
+}
+h4 {
+    font-family: Tahoma;
+    font-weight: normal;
+    margin-top: 0;
+}
+section {
+    margin-bottom: 3rem;
+}
+.c-block {
+    font: 105% sans-serif;
+    text-align: center;
+    text-transform: capitalize;
+    color: black;
+    padding: 2rem 0.5rem;
+    background: transparent;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+.violet{background: blueviolet}
+.blueviolet{background: royalblue}
+.blue{background: dodgerblue}
+.bluegreen{background: CadetBlue}
+.green{background: mediumseagreen}
+.greenyellow{background: greenyellow}
+.yellow{background: yellow}
+.gold{background: gold}
+.orange{background: orange}
+.redorange{background: orangered}
+.red{background: red}
+.redviolet{background: darkorchid}
+/*simple grid */
+
+.grid {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: 5rem 5rem 5rem;
+}
+/*grid auto flow*/
+
+.grid-auto-flow {
+    display: grid;
+    grid-template-columns: repeat(6, 25%);
+    grid-template-rows: repeat(3, 7rem);
+    grid-auto-flow: column;
+}
+
+/*grid 1 positioning grid blocks*/
+
+.grid-1 {
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+}
+.grid-1 .green {
+    grid-column: 2/3;
+    grid-row: 1/2;
+
+    background: repeating-linear-gradient( -45deg, #50da8c, #50da8c 4px, mediumseagreen 4px, mediumseagreen 20px);
+}
+.grid-1 .orange {
+    grid-column: 2/3;
+    grid-row: 2/2;
+
+    background: repeating-linear-gradient( -45deg, #f9c66a, #f9c66a 4px, orange 4px, orange 20px);
+}
+.grid-1 .yellow {
+    grid-column: 3/4;
+    grid-row: 3/2;
+
+    background: repeating-linear-gradient( -45deg, #f9f99c, #f9f99c 4px, yellow 4px, yellow 20px);
+}
+.grid-1 .redviolet {
+    grid-column: 3/4;
+    grid-row: 4/3;
+
+    background: repeating-linear-gradient( -45deg, #b17fcb, #b17fcb 4px, darkorchid 4px, darkorchid 20px);
+}
+/*grid 2 Responsiveness */
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+}
+/*grid 3  grid gap & frame*/
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(1, 5fr 1fr);
+    grid-template-rows: repeat(1, 1fr 5fr 1fr);
+    grid-gap: 0.5rem;
+}
+/*grid 4 named lines*/
+
+.grid-4 {
+    display: grid;
+    width: 100%;
+    grid-template-columns:  [start-sidebar] 1fr .5rem 1fr [end-sidebar] .5rem
+                            [start-main-area] 1fr repeat(6, [gutter] .5rem [row] 2fr) [end-main-area];
+    grid-template-rows: [start-header] 1fr [end-header] .5rem
+                        [start-main] 4fr [end-main] .5rem
+                        [start-footer] 1fr [end-footer];
+}
+.grid-4 .violet {
+    grid-column: start-sidebar / end-main-area;
+    grid-row: start-header / end-header;
+}
+.grid-4 .blueviolet {
+    grid-column: start-sidebar / end-sidebar;
+    grid-row: start-main / end-main;
+}
+.grid-4 .blue {
+    grid-column: start-main-area / gutter 8;
+    grid-row: start-main / end-main;
+}
+.grid-4 .green {
+    grid-column: start-sidebar / end-main-area;
+    grid-row: start-footer / end-footer;
+}
+
+/*grid 5  area names*/
+
+.grid-5 {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(1, 1fr);
+    grid-row-gap: .5rem;
+    grid-template-rows: auto;
+    grid-template-areas: "header"
+                         "sidebar"
+                         "main"
+                         "footer";
+}
+.grid-5 .violet {
+    grid-area: header;
+}
+.grid-5 .blueviolet {
+    grid-area: sidebar;
+}
+.grid-5 .blue {
+    grid-area: main;
+}
+.grid-5 .green {
+    grid-area: footer;
+}
+
+@media only screen and (min-width: 40rem)  {
+    .grid-5 {
+        grid-gap: 0;
+        grid-template-columns: 35% auto;
+        grid-template-areas: "header header"
+                             "sidebar main"
+                             "footer footer";
+    }
+}
+
+@media only screen and (min-width: 70rem)   {
+    .grid-5 {
+        grid-gap: 1rem;
+        grid-template-columns: 1fr repeat(3, .5em 1fr);
+        grid-template-areas: "header header header header header header header"
+                             "sidebar . main main main main main"
+                             "footer footer footer footer footer footer footer";
+    }
+}
